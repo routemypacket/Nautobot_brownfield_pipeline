@@ -1,0 +1,14 @@
+ansible==6.7.0
+flask==2.3.3
+docker==7.1.0
+requests==2.26.0
+netmiko==4.2.0
+ncclient==0.6.9
+pynacl==1.5.0
+bcrypt==4.2.1
+cryptography==43.0.3
+cffi==1.17.1
+PyYAML==5.3.1
+jsonschema==3.2.0
+texttable==1.7.0
+websocket-client==0.59.0

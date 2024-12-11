@@ -1,0 +1,12 @@
+---
+- name: Example Playbook to Show via Flask API
+  hosts: localhost
+  tasks:
+    - name: Create a file using Ansible
+      file:
+        path: /tmp/ansible_created_file.txt
+        state: touch
+    - name: Add content to the file
+      lineinfile:
+        path: /tmp/ansible_created_file.txt
+        line: "This file was created by an Ansible playbook via Flask API"
