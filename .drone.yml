@@ -1,0 +1,85 @@
+kind: pipeline
+type: docker
+name: Testing Python CI/CD
+
+
+steps:
+- name: debug-python-environment
+  image: deadtree101/netauto
+  network_mode: host
+  commands:
+    - python --version
+    - python -m pip list
+
+
+
+- name: Populate Nautobot from sandbox iosXR device
+  image: deadtree101/netauto
+  network_mode: host
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+  commands:
+# - pip3 install -r requirements.txt
+  - python3 /drone/src/Nautobot_code/populate_nautobot_device.py
+
+
+
+
+- name: Batfish Prechecks
+  image: deadtree101/netauto
+  network_mode: host
+  commands:
+  - python batfish_updated.py
+#  - python batfish_updated.py || echo "Script failed, printing debug info"
+#  - python -m traceback batfish_updated.py
+
+- name: Debug File Structure
+  image: alpine
+  commands:
+    - ls -R /drone/src
+
+
+- name: Check IP Interfaces of sandbox iosXR device
+  image: deadtree101/netauto
+#  environment:
+#    MY_PASS:
+#      from_secret: MY_PASS
+  commands:
+# - pip3 install -r requirements.txt
+  - python3 checkip.py
+
+trigger:
+  branch:
+    exclude:
+    - master
+
+
+#    Legacy testing of tasks such as batfish etc:
+  
+#- name: debug-batfish-connectivity
+#  image: alpine/curl
+#  commands:
+#   - ip addr
+#   - ip route
+#   - curl -v http://192.168.0.130:9996/v2/version || echo "Batfish server unreachable"
+    
+
+#- name: debug-batfish-connection
+#  image: deadtree101/netauto:latest
+#  commands:
+#  - curl -v http://127.0.0.1:9996/v2/version || echo "Connection to localhost failed"
+#  - curl -v http://host.docker.internal:9996/v2/version || echo "Connection to host.docker.internal failed"
+#  - curl -v http://172.17.0.1:9996/v2/version || echo "Connection to Docker host IP failed"
+      
+#- name: Black Code Format Check
+#  image: deadtree101/netauto
+#  commands:
+#  - black . --check
+#- name: check-python-packages
+#  image: deadtree101/netauto
+#  commands:
+#  - python -m pip list
+
+
+#test
