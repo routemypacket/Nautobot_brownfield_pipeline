@@ -15,13 +15,13 @@ devices = [
         "password": "Admin_1234!",
         "name": "wee01-leaf-01",  # Ensure the name follows the defined naming standard
     },
-    {
-        "device_type": "cisco_ios",
-        "host": "device2.example.com",
-        "username": "admin",
-        "password": "password2",
-        "name": "wee01-leaf-02",  # Example second device
-    },
+#    {
+#        "device_type": "cisco_ios",
+#        "host": "device2.example.com",
+#        "username": "admin",
+#        "password": "password2",
+#        "name": "wee01-leaf-02",  # Example second device
+#    },
     # Add more devices as needed
 ]
 
