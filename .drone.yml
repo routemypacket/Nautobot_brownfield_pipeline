@@ -28,4 +28,3 @@ trigger:
     exclude:
     - master
 
-#test
