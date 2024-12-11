@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
         # Push interface data to Nautobot
         if parsed_data and "interfaces" in parsed_data:
-            device_id = get_device_id(device_name, token, nautobot_url)
+            device_id = get_device_id(device_name, token)
             if device_id:
                 push_interfaces_to_nautobot(device_id, parsed_data["interfaces"], token)
             else:
@@ -120,7 +120,7 @@ if __name__ == "__main__":
 
         # Push VLAN data to Nautobot
         if parsed_data and "vlans" in parsed_data:
-            device_id = get_device_id(device_name, token, nautobot_url)
+            device_id = get_device_id(device_name, token)
             if device_id:
                 push_vlans_to_nautobot(device_id, parsed_data["vlans"], token=token)
             else:
