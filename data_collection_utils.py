@@ -6,8 +6,11 @@ def get_running_config(device):
     """
     Connects to a device via SSH using Netmiko and retrieves the running config.
     """
-    print("Connecting to device via CLI using Netmiko...")
-    connection = ConnectHandler(**device)
+    # Remove keys that are not recognized by Netmiko
+    device_netmiko = {
+        key: value for key, value in device.items() if key != "name"
+    }
+    connection = ConnectHandler(**device_netmiko)
     running_config = connection.send_command("show running-config")
     connection.disconnect()
     return running_config
