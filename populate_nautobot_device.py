@@ -43,7 +43,7 @@ def update_device_config(device_name, running_config, token, nautobot_url):
         bool: True if the update was successful, False otherwise.
     """
     # Get the device ID from Nautobot
-    device_id = get_device_id(device_name, token, nautobot_url)
+    device_id = get_device_id(device_name, token)
     if not device_id:
         print(f"Device '{device_name}' not found in Nautobot.")
         return False
