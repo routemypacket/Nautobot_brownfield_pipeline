@@ -27,3 +27,5 @@ trigger:
   branch:
     exclude:
     - master
+
+#test
