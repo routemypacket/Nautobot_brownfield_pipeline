@@ -1,6 +1,7 @@
 import requests
 import json
 from netmiko import ConnectHandler
+from netmiko.ssh_exception import NetmikoAuthenticationException, NetmikoTimeoutException
 from parser_utils import parse_interfaces, parse_running_config
 from data_collection_utils import get_running_config, get_restconf_data, get_netconf_data
 from nautobot_api_utils import create_or_update_in_nautobot, push_to_nautobot, get_device_id
@@ -26,8 +27,6 @@ devices = [
 ]
 
 token = "79c056180ba76e6e39b8cccf4b2ef9e635b15c15"
-nautobot_url = "http://localhost:8081"  # Update with your Nautobot instance URL
-
 
 def update_device_config(device_name, running_config, token, nautobot_url):
     """
