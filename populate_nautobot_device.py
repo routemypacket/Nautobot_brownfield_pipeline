@@ -18,7 +18,7 @@ devices = [
     },
     {
         "device_type": "cisco_ios",
-        "host": "10.10.20.171",
+        "host": "10.10.20.177",
         "username": "cisco",
         "password": "cisco",
         "name": "wee01-leaf-02",  # Example second device
