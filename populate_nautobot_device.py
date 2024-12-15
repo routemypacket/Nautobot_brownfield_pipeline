@@ -33,7 +33,7 @@ devices = [
     # Add more devices as needed
 ]
 
-token = "41446049e0f364b588f29d902d6ab595c37068a2
+token = "41446049e0f364b588f29d902d6ab595c37068a2"
 nautobot_url = "http://localhost:8000"  # Update with your Nautobot instance URL
 
 
