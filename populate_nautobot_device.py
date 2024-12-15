@@ -14,7 +14,7 @@ devices = [
         "host": "sbx-nxos-mgmt.cisco.com",
         "username": "admin",
         "password": "Admin_1234!",
-        "name": "wee01-leaf-01",  # Ensure the name follows the defined naming standard
+        "name": "msp01-leaf-01",  # Ensure the name follows the defined naming standard
     },
 #    {
 #        "device_type": "cisco_ios",
@@ -110,8 +110,8 @@ if __name__ == "__main__":
             "name": device_name,
             "device_type": {"model": "Nexus-9Kv"},  # Update with an existing model in Nautobot
             "manufacturer": "Cisco",  # Manufacturer name must match what exists in Nautobot
-            "role": {"name": "Router"},  # Must match an existing role in Nautobot
-            "location": {"name": "Weehawken"},  # Must match an existing site in Nautobot
+            "role": {"name": "Switch"},  # Must match an existing role in Nautobot
+            "location": {"name": "MSP"},  # Must match an existing site in Nautobot
             "status": {"name": "active"},
             "serial": "123456",  # Example serial number
         }
