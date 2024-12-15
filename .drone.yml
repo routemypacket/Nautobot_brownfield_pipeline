@@ -4,12 +4,12 @@ name: Nautobot discovery and Population Pipeline
 
 
 steps:
-- name: debug-python-environment
-  image: deadtree101/netauto
-  network_mode: host
-  commands:
-    - python --version
-    - python -m pip list
+#- name: debug-python-environment
+#  image: deadtree101/netauto
+#  network_mode: host
+#  commands:
+#    - python --version
+#    - python -m pip list
 
 
 - name: Populate Nautobot from sandbox iosXR device
