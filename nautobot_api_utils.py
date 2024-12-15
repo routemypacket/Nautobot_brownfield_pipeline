@@ -3,7 +3,7 @@ import json
 
 def create_or_update_in_nautobot(endpoint, data):
     print(f"Creating or updating {endpoint} in Nautobot...")
-    nautobot_url = f"http://localhost:8081/api/{endpoint}/"
+    nautobot_url = f"http://localhost:8000/api/{endpoint}/"
     headers = {
         "Authorization": "Token a2e22503d99e9337ed1e18fdcf8aeb498c224b3f",
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ def create_or_update_in_nautobot(endpoint, data):
 
 def push_to_nautobot(data, token):
     print("Pushing data to Nautobot...")
-    nautobot_url = "http://localhost:8081/api/dcim/devices/"
+    nautobot_url = "http://localhost:8000/api/dcim/devices/"
     headers = {
         "Authorization": f"Token {token}",
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ def push_to_nautobot(data, token):
 
 def get_device_id(device_name, token):
     print(f"Retrieving device ID for {device_name}...")
-    nautobot_url = f"http://localhost:8081/api/dcim/devices/?name={device_name}"
+    nautobot_url = f"http://localhost:8000/api/dcim/devices/?name={device_name}"
     headers = {
         "Authorization": f"Token {token}",
     }

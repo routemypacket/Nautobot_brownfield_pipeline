@@ -2,7 +2,7 @@ import requests
 
 def push_interfaces_to_nautobot(device_id, interfaces, token):
     print(f"Pushing interface data for device ID {device_id} to Nautobot...")
-    nautobot_url = "http://localhost:8081/api/dcim/interfaces/"
+    nautobot_url = "http://localhost:8000/api/dcim/interfaces/"
     headers = {
         "Authorization": f"Token {token}",
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ def push_interfaces_to_nautobot(device_id, interfaces, token):
             "device": {
                 "id": device_id,
                 "object_type": "dcim.device",
-                "url": f"http://localhost:8081/api/dcim/devices/{device_id}/"
+                "url": f"http://localhost:8000/api/dcim/devices/{device_id}/"
             },
             "description": interface_data.get("description", ""),
             "enabled": True,
@@ -34,7 +34,7 @@ def push_interfaces_to_nautobot(device_id, interfaces, token):
             interface_payload["untagged_vlan"] = {
                 "id": untagged_vlan.get("id"),
                 "object_type": "ipam.vlan",
-                "url": f"http://localhost:8081/api/ipam/vlans/{untagged_vlan.get('id')}/"
+                "url": f"http://localhost:8000/api/ipam/vlans/{untagged_vlan.get('id')}/"
             }
 
         if tagged_vlans:
@@ -42,19 +42,19 @@ def push_interfaces_to_nautobot(device_id, interfaces, token):
                 {
                     "id": vlan.get("id"),
                     "object_type": "ipam.vlan",
-                    "url": f"http://localhost:8081/api/ipam/vlans/{vlan.get('id')}/"
+                    "url": f"http://localhost:8000/api/ipam/vlans/{vlan.get('id')}/"
                 }
                 for vlan in tagged_vlans
             ]
 
         # Check if the interface already exists
         try:
-            check_url = f"http://localhost:8081/api/dcim/interfaces/?device_id={device_id}&name={interface_name}"
+            check_url = f"http://localhost:8000/api/dcim/interfaces/?device_id={device_id}&name={interface_name}"
             response = requests.get(check_url, headers=headers)
             if response.status_code == 200 and response.json()["count"] > 0:
                 # Interface exists, perform PATCH
                 interface_id = response.json()["results"][0]["id"]
-                patch_url = f"http://localhost:8081/api/dcim/interfaces/{interface_id}/"
+                patch_url = f"http://localhost:8000/api/dcim/interfaces/{interface_id}/"
                 response = requests.patch(patch_url, headers=headers, json=interface_payload)
                 if response.status_code in [200, 204]:
                     print(f"Interface '{interface_name}' successfully updated.")
@@ -83,7 +83,7 @@ def push_vlans_to_nautobot(device_id, vlans, token):
         }
         try:
             response = requests.post(
-                "http://localhost:8081/api/ipam/vlans/",
+                "http://localhost:8000/api/ipam/vlans/",
                 headers={
                     "Authorization": f"Token {token}",
                     "Content-Type": "application/json",
