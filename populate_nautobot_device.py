@@ -108,7 +108,7 @@ if __name__ == "__main__":
         # Push the gathered data to Nautobot
         nautobot_data = {
             "name": device_name,
-            "device_type": {"model": "cisco_nexus-9kv_de2d"},  # Update with an existing model in Nautobot
+            "device_type": {"model": "Nexus-9kv"},  # Update with an existing model in Nautobot
             "manufacturer": "Cisco",  # Manufacturer name must match what exists in Nautobot
             "role": {"name": "Switch"},  # Must match an existing role in Nautobot
             "location": {"name": "MSP"},  # Must match an existing site in Nautobot
