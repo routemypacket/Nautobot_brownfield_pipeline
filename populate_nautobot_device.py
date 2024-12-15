@@ -112,7 +112,7 @@ if __name__ == "__main__":
             "manufacturer": "Cisco",  # Manufacturer name must match what exists in Nautobot
             "role": {"name": "Router"},  # Must match an existing role in Nautobot
             "location": {"name": "Weehawken"},  # Must match an existing site in Nautobot
-            "status": {"name": "active"},
+            "status": {"name": "Active"},
             "serial": "123456",  # Example serial number
         }
 
