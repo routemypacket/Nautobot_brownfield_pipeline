@@ -63,17 +63,4 @@ def get_device_id(device_name, token):
             return None
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
-        return Noneeadree@deadree:~/Code/Nautobot_brownfield_pipeline$ curl -X POST http://locurl -X POST http://localhost:8000/api/dcim/devices/ \
-  -H "Authorization: Token 0123456789abcdef0123456789abcdef01234567" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "msp01-leaf-01",
-    "device_type": "2526829f-7980-4706-89e6-728a3f440931",
-    "manufacturer": "Cisco",
-    "role": "Switch",
-    "location": "MSP",
-    "status": "Active",
-    "serial": "123456",
-    "comments": "Device for Leaf 01 in MSP"
-  }'
-{"location":["Devices may not associate to locations of type \"Datacenter\"."]}deadree@deadree:~/Code/Nautobot_brownfield_pipeline$ 
+        return None
