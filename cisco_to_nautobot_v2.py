@@ -83,7 +83,7 @@ def create_or_update_in_nautobot(endpoint, data):
     print(f"Creating or updating {endpoint} in Nautobot...")
     nautobot_url = f"http://localhost:8000/api/{endpoint}/"
     headers = {
-        "Authorization": "Token 41446049e0f364b588f29d902d6ab595c37068a2",
+        "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
     }
     try:
@@ -105,7 +105,7 @@ def push_to_nautobot(data):
     print("Pushing data to Nautobot...")
     nautobot_url = "http://localhost:8000/api/dcim/devices/"
     headers = {
-        "Authorization": "Token 41446049e0f364b588f29d902d6ab595c37068a2",
+        "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
     }
     print("Payload being sent to Nautobot:")
@@ -149,7 +149,7 @@ def get_device_id(device_name):
     print(f"Retrieving device ID for {device_name}...")
     nautobot_url = f"http://localhost:8000/api/dcim/devices/?name={device_name}"
     headers = {
-        "Authorization": "Token 41446049e0f364b588f29d902d6ab595c37068a2",
+        "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
     }
     try:
         response = requests.get(nautobot_url, headers=headers)
