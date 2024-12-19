@@ -30,6 +30,20 @@ devices = [
         "password": "cisco",
         "name": "wee01-leaf-03",  # Example third device
     },
+        {
+        "device_type": "cisco_ios",
+        "host": "192.168.0.230",
+        "username": "admin",
+        "password": "cisco",
+        "name": "wee01-leaf-04",  # Example fourth device
+    },
+    {
+        "device_type": "cisco_ios",
+        "host": "192.168.0.231",
+        "username": "admin",
+        "password": "cisco",
+        "name": "wee01-leaf-05",  # Example fifth device
+    },
     # Add more devices as needed
 ]
 
