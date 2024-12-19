@@ -13,23 +13,23 @@ devices = [
         "device_type": "cisco_ios",
         "host": "sbx-nxos-mgmt.cisco.com",
         "username": "admin",
-        "password": "Admin_1234!",
+        "password": "131.226.217.151",
         "name": "wee01-leaf-01",  # Ensure the name follows the defined naming standard
     },
-#    {
-#        "device_type": "cisco_ios",
-#        "host": "10.10.20.177",
-#        "username": "cisco",
-#        "password": "cisco",
-#        "name": "wee01-leaf-02",  # Example second device
-#    },
-#    {
-#        "device_type": "cisco_ios",
-#        "host": "10.10.20.178",
-#        "username": "cisco",
-#        "password": "cisco",
-#        "name": "wee01-leaf-03",  # Example third device
-#    },
+    {
+        "device_type": "cisco_ios",
+        "host": "10.10.20.177",
+        "username": "cisco",
+        "password": "cisco",
+        "name": "wee01-leaf-02",  # Example second device
+    },
+    {
+        "device_type": "cisco_ios",
+        "host": "10.10.20.178",
+        "username": "cisco",
+        "password": "cisco",
+        "name": "wee01-leaf-03",  # Example third device
+    },
     # Add more devices as needed
 ]
 
