@@ -9,13 +9,13 @@ from interface_utils import push_interfaces_to_nautobot, push_vlans_to_nautobot
 
 # Define the list of devices
 devices = [
-    {
-        "device_type": "cisco_ios",
-        "host": "sbx-nxos-mgmt.cisco.com",
-        "username": "admin",
-        "password": "131.226.217.151",
-        "name": "wee01-leaf-01",  # Ensure the name follows the defined naming standard
-    },
+#    {
+#        "device_type": "cisco_ios",
+#        "host": "sbx-nxos-mgmt.cisco.com",
+ #       "username": "admin",
+#       "password": "A",
+ #       "name": "wee01-leaf-01",  # Ensure the name follows the defined naming standard
+ #   },
     {
         "device_type": "cisco_ios",
         "host": "10.10.20.177",
