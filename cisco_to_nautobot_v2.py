@@ -6,10 +6,14 @@ import re
 
 # Device details for Cisco IOS-XR device
 device = {
+#    "device_type": "cisco_ios",
+#    "host": "sandbox-iosxr-1.cisco.com",
+#    "username": "admin",
+#    "password": "C1sco12345",
     "device_type": "cisco_ios",
     "host": "sandbox-iosxr-1.cisco.com",
-    "username": "admin",
-    "password": "C1sco12345",
+    "username": "cisco",
+    "password": "cisco",
 }
 
 # Step 1: Gather Data via CLI using Netmiko
