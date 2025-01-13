@@ -28,4 +28,4 @@ trigger:
     exclude:
     - master
 
-#te
+#discover run at midnight
