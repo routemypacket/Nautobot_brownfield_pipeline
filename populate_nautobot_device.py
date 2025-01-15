@@ -122,10 +122,10 @@ if __name__ == "__main__":
         # Push the gathered data to Nautobot
         nautobot_data = {
             "name": device_name,
-            "device_type": {"model": "CSR1000V"},  # Update with an existing model in Nautobot
+            "device_type": {"model": "3725"},  # Update with an existing model in Nautobot
             "manufacturer": "Cisco",  # Manufacturer name must match what exists in Nautobot
-            "role": {"name": "Router"},  # Must match an existing role in Nautobot
-            "location": {"name": "Weehawken"},  # Must match an existing site in Nautobot
+            "role": {"name": "Border Router"},  # Must match an existing role in Nautobot
+            "location": {"name": "ABC"},  # Must match an existing site in Nautobot
             "status": {"name": "Active"},
             "serial": "123456",  # Example serial number
         }
