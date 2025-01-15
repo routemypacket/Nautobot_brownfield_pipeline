@@ -48,8 +48,7 @@ devices = [
 ]
 
 token = "0123456789abcdef0123456789abcdef01234567"
-#nautobot_url = "http://localhost:8000"  # This is URL for docker based deployment on same laptop
-
+#nautobot_url = "http://192.168.0.44:8001"  # This is URL for docker based deployment on same laptop
 nautobot_url = "http://192.168.0.44:8001" # This is Nautobot deployment on Server ubuntu
  
 def update_device_config(device_name, running_config, token, nautobot_url):

@@ -20,7 +20,7 @@ try:
     net_connect.disconnect()
 
     # Post config data to Nautobot
-    nautobot_url = 'http://localhost:8000/api/'
+    nautobot_url = 'http://192.168.0.44:8001/api/'
     token = 'dadab498fca1ef6b3e221c2e9b4cc81dc1f3e1f4'
     headers = {
         'Content-Type': 'application/json',

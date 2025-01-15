@@ -62,7 +62,7 @@ def parse_running_config(running_config):
 
 def create_or_update_in_nautobot(endpoint, data):
     print(f"Creating or updating {endpoint} in Nautobot...")
-    nautobot_url = f"http://localhost:8000/api/{endpoint}/"
+    nautobot_url = f"http://192.168.0.44:8001/api/{endpoint}/"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ def create_or_update_in_nautobot(endpoint, data):
 
 def push_to_nautobot(data):
     print("Pushing data to Nautobot...")
-    nautobot_url = "http://localhost:8000/api/dcim/devices/"
+    nautobot_url = "http://192.168.0.44:8001/api/dcim/devices/"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
@@ -108,7 +108,7 @@ def push_to_nautobot(data):
 
 def get_device_id(device_name):
     print(f"Retrieving device ID for {device_name}...")
-    nautobot_url = f"http://localhost:8000/api/dcim/devices/?name={device_name}"
+    nautobot_url = f"http://192.168.0.44:8001/api/dcim/devices/?name={device_name}"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
     }
@@ -131,7 +131,7 @@ def push_interfaces_to_nautobot(device_id, interfaces):
             "device": {
                 "id": device_id,
                 "object_type": "dcim.device",
-                "url": f"http://localhost:8000/api/dcim/devices/{device_id}/"
+                "url": f"http://192.168.0.44:8001/api/dcim/devices/{device_id}/"
             },
             "description": interface_data.get("description", ""),
             "enabled": True,
@@ -140,7 +140,7 @@ def push_interfaces_to_nautobot(device_id, interfaces):
                 "id": "3e1a93d4-cef2-4b05-8fb4-838ff0f5efcb"  # Correct status ID for "Active"
             }
         }
-        nautobot_url = f"http://localhost:8000/api/dcim/interfaces/"
+        nautobot_url = f"http://192.168.0.44:8001/api/dcim/interfaces/"
         headers = {
             "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
             "Content-Type": "application/json",
@@ -153,11 +153,11 @@ def push_interfaces_to_nautobot(device_id, interfaces):
                 print(f"Interface {interface_name} already exists. Attempting to update...")
                 
                 # Fetch the interface ID to update
-                existing_interface_url = f"http://localhost:8000/api/dcim/interfaces/?name={interface_name}&device_id={device_id}"
+                existing_interface_url = f"http://192.168.0.44:8001/api/dcim/interfaces/?name={interface_name}&device_id={device_id}"
                 existing_interface_response = requests.get(existing_interface_url, headers=headers)
                 if existing_interface_response.status_code == 200 and existing_interface_response.json()["count"] == 1:
                     interface_id = existing_interface_response.json()["results"][0]["id"]
-                    update_url = f"http://localhost:8000/api/dcim/interfaces/{interface_id}/"
+                    update_url = f"http://192.168.0.44:8001/api/dcim/interfaces/{interface_id}/"
                     response = requests.patch(update_url, headers=headers, json=interface_payload)
                     if response.status_code in [200, 204]:
                         print(f"Interface {interface_name} successfully updated in Nautobot.")

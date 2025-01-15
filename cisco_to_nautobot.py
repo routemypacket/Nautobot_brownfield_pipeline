@@ -44,7 +44,7 @@ def parse_cisco_config(config):
 
 # Function to push data to Nautobot
 def push_to_nautobot(data):
-    nautobot_url = 'http://localhost:8000/api/'
+    nautobot_url = 'http://192.168.0.44:8001/api/'
     token = 'dadab498fca1ef6b3e221c2e9b4cc81dc1f3e1f4'
 
     headers = {
@@ -255,7 +255,7 @@ print(json.dumps(parsed_data, indent=4))  # This will print the parsed data for 
 
 # Function to push data to Nautobot
 def push_to_nautobot(data):
-    nautobot_url = 'http://localhost:8000/api/'
+    nautobot_url = 'http://192.168.0.44:8001/api/'
     token = 'dadab498fca1ef6b3e221c2e9b4cc81dc1f3e1f4'
 
     headers = {

@@ -85,7 +85,7 @@ def parse_running_config(running_config):
 # Step 5: Create or Update Data in Nautobot
 def create_or_update_in_nautobot(endpoint, data):
     print(f"Creating or updating {endpoint} in Nautobot...")
-    nautobot_url = f"http://localhost:8000/api/{endpoint}/"
+    nautobot_url = f"http://192.168.0.44:8001/api/{endpoint}/"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
@@ -107,7 +107,7 @@ def create_or_update_in_nautobot(endpoint, data):
 # Step 6: Push Data to Nautobot
 def push_to_nautobot(data):
     print("Pushing data to Nautobot...")
-    nautobot_url = "http://localhost:8000/api/dcim/devices/"
+    nautobot_url = "http://192.168.0.44:8001/api/dcim/devices/"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
         "Content-Type": "application/json",
@@ -151,7 +151,7 @@ def push_to_nautobot(data):
 # Helper function to get device ID by name
 def get_device_id(device_name):
     print(f"Retrieving device ID for {device_name}...")
-    nautobot_url = f"http://localhost:8000/api/dcim/devices/?name={device_name}"
+    nautobot_url = f"http://192.168.0.44:8001/api/dcim/devices/?name={device_name}"
     headers = {
         "Authorization": "Token 0123456789abcdef0123456789abcdef01234567",
     }
