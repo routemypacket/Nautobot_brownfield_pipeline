@@ -11,7 +11,27 @@ steps:
     - python --version
     - python -m pip list
 
-
+- name: Validate and Initialize Git
+  image: deadtree101/netauto:latest
+  network_mode: host
+  volumes:
+    - name: backup_volume
+      path: /home/devtree/Code/Nautobot_device_backups
+  commands:
+    - |
+      echo "Checking if /mnt/backup is a Git repository..."
+      if [ ! -d "/mnt/backup/.git" ]; then
+        echo "/mnt/backup is not a Git repository. Initializing..."
+        cd /mnt/backup
+        git init
+        git remote add origin git@github.com:routemypacket/Nautobot_device_backups.git
+        echo "Git repository initialized successfully."
+      else
+        echo "/mnt/backup is a valid Git repository."
+      fi
+      cd /mnt/backup
+      git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
+  
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto
   network_mode: host
@@ -29,7 +49,7 @@ volumes:
   - name: backup_volume
     host:
       path: /home/devtree/Code/Nautobot_device_backups
-      
+
 trigger:
   branch:
     exclude:
