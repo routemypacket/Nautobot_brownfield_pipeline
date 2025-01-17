@@ -32,9 +32,9 @@ steps:
       else
         echo "/mnt/backup is a valid Git repository."
       fi
-    - git config --global --add safe.directory /mnt/backup
-    - cd /mnt/backup
-    - git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
+        git config --global --add safe.directory /mnt/backup
+        cd /mnt/backup
+        git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
   
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto
