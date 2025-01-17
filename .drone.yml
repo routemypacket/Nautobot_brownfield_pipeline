@@ -2,7 +2,6 @@ kind: pipeline
 type: docker
 name: Nautobot discovery and Population Pipeline
 
-
 steps:
 - name: debug-python-environment
   image: deadtree101/netauto
@@ -11,63 +10,45 @@ steps:
     - python --version
     - python -m pip list
 
-
-
 - name: Validate and Initialize Git
   image: deadtree101/netauto:latest
   network_mode: host
   volumes:
     - name: backup_volume
       path: /mnt/backup
-    - name: ssh_volume
-      path: /root/.ssh
   commands:
-    - mkdir -p /root/.ssh
-    - chmod 700 /root/.ssh
-    - chmod 600 /root/.ssh/known_hosts
-    - ls -la /root/.ssh
-    - ssh-keyscan github.com >> /root/.ssh/known_hosts
     - git config --global user.email "rafay_rasool30@hotmail.com"
     - git config --global user.name "Rafay Rasool"
-    - ssh -T git@github.com || echo "SSH authentication failed"
-
     - |
       echo "Checking if /mnt/backup is a Git repository..."
       if [ ! -d "/mnt/backup/.git" ]; then
         echo "/mnt/backup is not a Git repository. Initializing..."
         cd /mnt/backup
         git init
-        git remote add origin git@github.com:routemypacket/Nautobot_device_backups.git
+        git remote add origin https://routemypacket:$GITHUB_TOKEN@github.com/routemypacket/Nautobot_device_backups.git
         echo "Git repository initialized successfully."
       else
         echo "/mnt/backup is a valid Git repository."
       fi
-        git config --global --add safe.directory /mnt/backup
-        cd /mnt/backup
-        git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
+    - git config --global --add safe.directory /mnt/backup
+    - cd /mnt/backup
+    - git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
     - ls -la /mnt
     - ls -la /mnt/backup
-  
+
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto
   network_mode: host
-#  environment:
-#    MY_PASS:
-#      from_secret: MY_PASS
   volumes:
     - name: backup_volume
       path: /home/devtree/Code/Nautobot_device_backups
   commands:
-# - pip3 install -r requirements.txt
-  - python3 /drone/src/populate_nautobot_device.py
+    - python3 /drone/src/populate_nautobot_device.py
 
 volumes:
   - name: backup_volume
     host:
       path: /home/devtree/Code/Nautobot_device_backups
-  - name: ssh_volume
-    host:
-      path: /home/devtree/.ssh
 
 trigger:
   branch:
