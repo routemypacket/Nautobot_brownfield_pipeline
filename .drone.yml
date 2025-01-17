@@ -27,6 +27,8 @@ steps:
     - ssh-keyscan github.com >> /root/.ssh/known_hosts
     - git config --global user.email "rafay_rasool30@hotmail.com"
     - git config --global user.name "Rafay Rasool"
+    - ssh -T git@github.com || echo "SSH authentication failed"
+
     - |
       echo "Checking if /mnt/backup is a Git repository..."
       if [ ! -d "/mnt/backup/.git" ]; then
@@ -70,4 +72,4 @@ trigger:
     exclude:
     - master
 
-#test
+#te
