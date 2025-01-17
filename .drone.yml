@@ -18,11 +18,18 @@ steps:
 #  environment:
 #    MY_PASS:
 #      from_secret: MY_PASS
+  volumes:
+    - name: backup_volume
+      path: /home/devtree/Code/Nautobot_device_backups
   commands:
 # - pip3 install -r requirements.txt
   - python3 /drone/src/populate_nautobot_device.py
 
-
+volumes:
+  - name: backup_volume
+    host:
+      path: /home/devtree/Code/Nautobot_device_backups
+      
 trigger:
   branch:
     exclude:

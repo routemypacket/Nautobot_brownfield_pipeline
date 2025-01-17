@@ -29,7 +29,7 @@ devices = [
 # Constants
 token = "0123456789abcdef0123456789abcdef01234567"
 nautobot_url = "http://192.168.0.44:8001"
-git_repo_path = "/home/devtree/Code/Nautobot_device_backups"
+git_repo_path = "/mnt/backup"
 git_remote_url = "git@github.com:routemypacket/Nautobot_device_backups.git"
 commit_message_prefix = "Backup update"
 
