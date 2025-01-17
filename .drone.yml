@@ -19,6 +19,7 @@ steps:
   commands:
     - git config --global user.email "rafay_rasool30@hotmail.com"
     - git config --global user.name "Rafay Rasool"
+    - ssh-keyscan github.com >> /etc/ssh/ssh_known_hosts
     - |
       echo "Checking if /mnt/backup is a Git repository..."
       if [ ! -d "/mnt/backup/.git" ]; then
