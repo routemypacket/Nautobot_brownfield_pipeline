@@ -37,7 +37,7 @@ steps:
     - git config --global --add safe.directory /mnt/backup
     - cd /mnt/backup
     - git remote set-url origin https://routemypacket:$GITHUB_TOKEN@github.com/routemypacket/Nautobot_device_backups.git
-    - git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
+    - git pull origin main || echo "Warning Pull failed. Check branch name or connectivity."
     - ls -la /mnt
     - ls -la /mnt/backup
 
