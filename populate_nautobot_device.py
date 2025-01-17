@@ -138,8 +138,6 @@ if __name__ == "__main__":
             "serial": "123456",
         }
 
-        # Push data to Nautobot
-        push_to_nautobot(nautobot_data, token)
 
         # Push configuration data to Git
         if gathered_data:
@@ -160,3 +158,6 @@ if __name__ == "__main__":
             )
             if not config_updated:
                 print(f"Failed to update configuration for device {device_name}.")
+
+        # Push data to Nautobot
+        push_to_nautobot(nautobot_data, token)
