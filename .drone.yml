@@ -19,7 +19,14 @@ steps:
   volumes:
     - name: backup_volume
       path: /mnt/backup
+    - name: ssh_volume
+      path: /root/.ssh
   commands:
+    - mkdir -p /root/.ssh
+    - chmod 700 /root/.ssh
+    - ssh-keyscan github.com >> /root/.ssh/known_hosts
+    - git config --global user.email "rafay_rasool30@hotmail.com"
+    - git config --global user.name "Rafay Rasool"
     - |
       echo "Checking if /mnt/backup is a Git repository..."
       if [ ! -d "/mnt/backup/.git" ]; then
