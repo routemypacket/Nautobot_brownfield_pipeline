@@ -10,8 +10,7 @@ steps:
   commands:
     - python --version
     - python -m pip list
-    - ls -la /mnt
-    - ls -la /mnt/backup
+
 
 
 - name: Validate and Initialize Git
@@ -35,6 +34,8 @@ steps:
         git config --global --add safe.directory /mnt/backup
         cd /mnt/backup
         git pull origin main || echo "Warning: Pull failed. Check branch name or connectivity."
+    - ls -la /mnt
+    - ls -la /mnt/backup
   
 - name: Populate Nautobot from sandbox iosXR device
   image: deadtree101/netauto
