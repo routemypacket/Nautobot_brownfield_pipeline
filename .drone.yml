@@ -16,7 +16,7 @@ steps:
   network_mode: host
   volumes:
     - name: backup_volume
-      path: /home/devtree/Code/Nautobot_device_backups
+      path: /mnt/backup
   commands:
     - |
       echo "Checking if /mnt/backup is a Git repository..."
